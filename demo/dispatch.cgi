@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use lib qw(
 	.
-	Net-OAuth2/lib
+	Net-OAuth/lib
 	/home/kg23/local/share/perl/5.10
 	/home/kg23/local/share/perl/5.10.0
 	/home/kg23/local/lib/perl/5.10

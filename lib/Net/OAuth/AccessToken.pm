@@ -17,7 +17,7 @@ sub request {
   my $oauth_req = $self->client->_make_request(
     'protected resource', 
     request_method => $method,
-    request_uri => $self->client->site_url($uri),
+    request_url => $self->client->site_url($uri),
     token => $self->token,
     token_secret => $self->token_secret,
     %params,

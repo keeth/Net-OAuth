@@ -1,27 +1,16 @@
+# Config file for OAuth demo
+# Note that client_id is your Consumer Key and client_secret is your Consumer Secret
 log: 'core'
 access_log: 1
 show_errors: 1
+session: "YAML"
 sites:
-        37signals:
-                name: '37Signals'
+        google_contacts:
+                name: 'Google Contacts'
                 client_id: ''
                 client_secret: ''
-                site: 'https://launchpad.37signals.com/'
-                authorize_path: '/authorization/new'
-                access_token_path: '/authorization/token'
-                access_token_method: 'POST'
-                protected_resource_path: '/authorization.xml'
-        facebook:
-                name: 'Facebook'
-                client_id: ''
-                client_secret: ''
-                site: 'https://graph.facebook.com'
-                protected_resource_path: '/me'
-        mixi:
-                name: 'mixi'
-                client_id: ''
-                client_secret: ''
-                site: 'https://mixi.jp'
-                authorize_url: 'https://mixi.jp/connect_authorize.pl'
-                access_token_url: 'https://secure.mixi-platform.com/2/token'
-                access_token_method: 'POST'
+                site: 'https://www.google.com/'
+                request_token_path: '/accounts/OAuthGetRequestToken?scope=https%3A%2F%2Fwww.google.com%2Fm8%2Ffeeds%2F'
+                authorize_path: '/accounts/OAuthAuthorizeToken'
+                access_token_path: '/accounts/OAuthGetAccessToken'
+                protected_resource_path: '/m8/feeds/contacts/default/full'

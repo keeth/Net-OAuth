@@ -2,11 +2,12 @@ package Net::OAuth::Client;
 use warnings;
 use strict;
 use base qw(Class::Accessor::Fast);
-__PACKAGE__->mk_accessors(qw/id secret callback is_v1a user_agent site debug/);
+__PACKAGE__->mk_accessors(qw/id secret callback is_v1a user_agent site debug session/);
 use LWP::UserAgent;
 use URI;
 use Net::OAuth;
 use Net::OAuth::Message;
+use Net::OAuth::AccessToken;
 use Carp;
 
 sub new {
@@ -77,7 +78,7 @@ sub get_request_token {
   my $oauth_req = $self->_make_request(
     "request token", 
     request_method => $self->request_token_method,
-    request_uri => $self->_make_url("request_token"),
+    request_url => $self->_make_url("request_token"),
     %params
   );
   $oauth_req->sign;
@@ -95,27 +96,35 @@ sub authorize_url {
   # allow user to get request token their own way
   unless (defined $params{token} and defined $params{token_secret}) {
     my $request_token = $self->get_request_token;
-    $params{token} = $request_token->token;
-    $params{token_secret} = $request_token->token_secret;
+    $params{token} = $request_token->{token};
+    $params{token_secret} = $request_token->{token_secret};
+  }
+  if (defined $self->session) {
+    $self->session->($params{token} => $params{token_secret});
   }
   my $oauth_req = $self->_make_request(
     'user auth',
-    request_uri => $self->_make_url('authorize'),
     %params
   );
-  return $oauth_req->to_url;
+  return $oauth_req->to_url($self->_make_url('authorize'));
 }
 
 sub get_access_token {
   my $self = shift;
-  my $code = shift;
+  my $token = shift;
+  my $verifier = shift;
   my %params = @_;
   
+  if (defined $self->session) {
+    $params{token_secret} = $self->session->($token);
+  }
+
   my $oauth_req = $self->_make_request(
     'access token', 
     request_method => $self->access_token_method,
-    request_uri => $self->_make_url('access_token'),
-    verifier => $code,
+    request_url => $self->_make_url('access_token'),
+    token => $token,
+    verifier => $verifier,
     %params
   );
   $oauth_req->sign;
@@ -126,7 +135,7 @@ sub get_access_token {
 
   my $oauth_res = $self->_parse_oauth_response('get an access token', $http_res);
   
-  return Net::OAuth2::AccessToken->new(%$oauth_res);
+  return Net::OAuth::AccessToken->new(%$oauth_res, client => $self);
 }
 
 sub access_token_url {
@@ -152,7 +161,7 @@ sub _make_request {
   my %defaults = (
     nonce => int( rand( 2**32 ) ),
     timestamp => time,
-    consumer_key => $self->key,
+    consumer_key => $self->id,
     consumer_secret => $self->secret,
     callback => $self->callback,
     signature_method => 'HMAC-SHA1',

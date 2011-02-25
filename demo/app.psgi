@@ -4,6 +4,8 @@ use warnings;
 use Dancer;
 use Net::OAuth::Client;
 use HTML::Entities;
+use Data::Dumper;
+$Data::Dumper::Terse = 1;
 
 sub client {
 	my $site_id = shift;
@@ -14,7 +16,10 @@ sub client {
 		request_token_path => config->{sites}{$site_id}{request_token_path},
 		authorize_path => config->{sites}{$site_id}{authorize_path},
 		access_token_path => config->{sites}{$site_id}{access_token_path},
-	)->web_server(callback => fix_uri(uri_for("/got/$site_id")));
+		callback => fix_uri(uri_for("/got/$site_id")),
+		session => \&session,
+		debug => 1,
+	);
 }
 
 get '/get/:site_id' => sub {
@@ -22,13 +27,15 @@ get '/get/:site_id' => sub {
 };
 
 get '/got/:site_id' => sub {
-	return wrap("Error: Missing access code") if (!defined params->{code});
-	my $access_token =  client(params->{site_id})->get_access_token(params->{code});
+	return wrap("Error: Missing access code") if (!defined params->{oauth_verifier});
+	my $access_token =  client(params->{site_id})->get_access_token(params->{oauth_token}, params->{oauth_verifier});
 	return wrap("Error: " . $access_token->to_string) if ($access_token->{error});
-	my $content = '<h2>Access token retrieved successfully!</h2><p>' . encode_entities($access_token->access_token) . '</p>';
+	my $content = '<h2>Access token retrieved successfully!</h2>'.
+	'<p>Token: ' . encode_entities($access_token->token) . '</p>'.
+	'<p>Secret: ' . encode_entities($access_token->token_secret) . '</p>';
 	my $response = $access_token->get(config->{sites}{params->{site_id}}{protected_resource_path});
 	if ($response->is_success) {
-		$content .= '<h2>Protected resource retrieved successfully!</h2><p>' . encode_entities($response->decoded_content) . '</p>';
+		$content .= '<h2>Protected resource retrieved successfully!</h2><textarea>' . encode_entities($response->decoded_content) . '</textarea>';
 	}
 	else {
 		$content .= '<p>Error: ' . $response->status_line . '</p>';
@@ -50,6 +57,7 @@ sub wrap {
 		<title>OAuth Test</title>
 		<style>
 		h1 a {color: black; text-decoration:none}
+		textarea {width:50%;height:300px}
 		</style>
 	</head>
 	<body>
