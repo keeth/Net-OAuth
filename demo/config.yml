@@ -1,0 +1,27 @@
+log: 'core'
+access_log: 1
+show_errors: 1
+sites:
+        37signals:
+                name: '37Signals'
+                client_id: ''
+                client_secret: ''
+                site: 'https://launchpad.37signals.com/'
+                authorize_path: '/authorization/new'
+                access_token_path: '/authorization/token'
+                access_token_method: 'POST'
+                protected_resource_path: '/authorization.xml'
+        facebook:
+                name: 'Facebook'
+                client_id: ''
+                client_secret: ''
+                site: 'https://graph.facebook.com'
+                protected_resource_path: '/me'
+        mixi:
+                name: 'mixi'
+                client_id: ''
+                client_secret: ''
+                site: 'https://mixi.jp'
+                authorize_url: 'https://mixi.jp/connect_authorize.pl'
+                access_token_url: 'https://secure.mixi-platform.com/2/token'
+                access_token_method: 'POST'
