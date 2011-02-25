@@ -55,7 +55,7 @@ L<Net::OAuth>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 Keith Grennan.
+Copyright 2011 Keith Grennan.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

@@ -58,76 +58,63 @@ sub smart_require {
 
 =head1 NAME
 
-Net::OAuth - OAuth protocol support
+Net::OAuth - OAuth 1.0 for Perl
 
 =head1 SYNOPSIS
 
-    # Consumer sends Request Token Request
+  # Web Server Example (Dancer)
 
-    use Net::OAuth;
-    $Net::OAuth::PROTOCOL_VERSION = Net::OAuth::PROTOCOL_VERSION_1_0A;
-    use HTTP::Request::Common;
-    my $ua = LWP::UserAgent->new;
+  # This example is simplified for illustrative purposes, see the complete code in /demo
 
-    my $request = Net::OAuth->request("request token")->new(
-        consumer_key => 'dpf43f3p2l4k3l03',
-        consumer_secret => 'kd94hf93k423kf44',
-        request_url => 'https://photos.example.net/request_token',
-        request_method => 'POST',
-        signature_method => 'HMAC-SHA1',
-        timestamp => '1191242090',
-        nonce => 'hsu94j3884jdopsl',
-        callback => 'http://printer.example.com/request_token_ready',
-        extra_params => {
-            apple => 'banana',
-            kiwi => 'pear',
-        }
-    );
+  # Note that client_id is the Consumer Key and client_secret is the Consumer Secret
 
-    $request->sign;
+  use Dancer;
+  use Net::OAuth::Client;
 
-    my $res = $ua->request(POST $request->to_url); # Post message to the Service Provider
+  sub client {
+  	Net::OAuth::Client->new(
+  		config->{client_id},
+  		config->{client_secret},
+  		site => 'https://www.google.com/',
+  		request_token_path => '/accounts/OAuthGetRequestToken?scope=https%3A%2F%2Fwww.google.com%2Fm8%2Ffeeds%2F',
+  		authorize_path => '/accounts/OAuthAuthorizeToken',
+  		access_token_path => '/accounts/OAuthGetAccessToken',
+  		callback => uri_for("/auth/google/callback"),
+  		session => \&session,
+  	);
+  }
 
-    if ($res->is_success) {
-        my $response = Net::OAuth->response('request token')->from_post_body($res->content);
-        print "Got Request Token ", $response->token, "\n";
-        print "Got Request Token Secret ", $response->token_secret, "\n";
-    }
-    else {
-        die "Something went wrong";
-    }
+  # Send user to authorize with service provider
+  get '/auth/google' => sub {
+  	redirect client->authorize_url;
+  };
 
-    # Etc..
+  # User has returned with token and verifier appended to the URL.
+  get '/auth/google/callback' => sub {
 
-    # Service Provider receives Request Token Request
+  	# Use the auth code to fetch the access token
+  	my $access_token =  client->get_access_token(params->{oauth_token}, params->{oauth_verifier});
 
-    use Net::OAuth;
-    $Net::OAuth::PROTOCOL_VERSION = Net::OAuth::PROTOCOL_VERSION_1_0A;
-    use CGI;
-    my $q = new CGI;
+  	# Use the access token to fetch a protected resource
+  	my $response = $access_token->get('/m8/feeds/contacts/default/full');
 
-    my $request = Net::OAuth->request("request token")->from_hash({$q->Vars},
-        request_url => 'https://photos.example.net/request_token',
-        request_method => $q->request_method,
-        consumer_secret => 'kd94hf93k423kf44',
-    );
+  	# Do something with said resource...
 
-    if (!$request->verify) {
-        die "Signature verification failed";
-    }
-    else {
-        # Service Provider sends Request Token Response
+  	if ($response->is_success) {
+  	  return "Yay, it worked: " . $response->decoded_content;
+  	}
+  	else {
+  	  return "Error: " . $response->status_line;
+  	}
+  };
 
-        my $response = Net::OAuth->response("request token")->new( 
-            token => 'abcdef',
-            token_secret => '0123456',
-            callback_confirmed => 'true',
-        );
+  dance;
 
-        print $response->to_post_body;
-    }    
+=head1 IMPORTANT
 
-    # Etc..
+Net::OAuth provides a low-level API for reading and writing OAuth messages.
+
+You probably should start with L<Net::OAuth::Client>.
 
 =head1 ABSTRACT
 

@@ -203,13 +203,63 @@ sub site_url {
 
 Net::OAuth::Client - OAuth 1.0A Client
 
-=head1 SEE ALSO
+=head1 SYNOPSIS
 
-L<Net::OAuth>
+  # Web Server Example (Dancer)
+
+  # This example is simplified for illustrative purposes, see the complete code in /demo
+
+  # Note that client_id is the Consumer Key and client_secret is the Consumer Secret
+
+  use Dancer;
+  use Net::OAuth::Client;
+
+  sub client {
+  	Net::OAuth::Client->new(
+  		config->{client_id},
+  		config->{client_secret},
+  		site => 'https://www.google.com/',
+  		request_token_path => '/accounts/OAuthGetRequestToken?scope=https%3A%2F%2Fwww.google.com%2Fm8%2Ffeeds%2F',
+  		authorize_path => '/accounts/OAuthAuthorizeToken',
+  		access_token_path => '/accounts/OAuthGetAccessToken',
+  		callback => uri_for("/auth/google/callback"),
+  		session => \&session,
+  	);
+  }
+
+  # Send user to authorize with service provider
+  get '/auth/google' => sub {
+  	redirect client->authorize_url;
+  };
+
+  # User has returned with token and verifier appended to the URL.
+  get '/auth/google/callback' => sub {
+
+  	# Use the auth code to fetch the access token
+  	my $access_token =  client->get_access_token(params->{oauth_token}, params->{oauth_verifier});
+
+  	# Use the access token to fetch a protected resource
+  	my $response = $access_token->get('/m8/feeds/contacts/default/full');
+
+  	# Do something with said resource...
+
+  	if ($response->is_success) {
+  	  return "Yay, it worked: " . $response->decoded_content;
+  	}
+  	else {
+  	  return "Error: " . $response->status_line;
+  	}
+  };
+
+  dance;
+  
+=head1 METHODS
+
+TODO.  See /demo for now.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 Keith Grennan.
+Copyright 2011 Keith Grennan.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

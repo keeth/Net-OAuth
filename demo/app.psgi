@@ -4,8 +4,6 @@ use warnings;
 use Dancer;
 use Net::OAuth::Client;
 use HTML::Entities;
-use Data::Dumper;
-$Data::Dumper::Terse = 1;
 
 sub client {
 	my $site_id = shift;
