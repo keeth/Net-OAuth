@@ -15,6 +15,7 @@ my $builder = Module::Build->new(
         'Test::Warn' => '0.21',
     },
     requires => {
+        'Digest::SHA' => '5.47',
         'Digest::HMAC_SHA1' => '1.01',
         'URI::Escape' => '3.28',
         'Class::Accessor' => '0.31',

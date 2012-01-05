@@ -298,6 +298,8 @@ The following signature methods are supported:
 
 =item * HMAC-SHA1
 
+=item * HMAC-SHA256
+
 =item * RSA-SHA1
 
 =back
@@ -313,6 +315,10 @@ This method is a trivial signature which adds no security.  Not recommended.
 =head3 HMAC-SHA1 SIGNATURES
 
 This method is available if you have Digest::HMAC_SHA1 installed.  This is by far the most commonly used method.
+
+=head3 HMAC-SHA256 SIGNATURES
+
+This method is available if you have Digest::SHA installed.
 
 =head3 RSA-SHA1 SIGNATURES
 
