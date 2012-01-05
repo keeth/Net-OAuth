@@ -6,15 +6,9 @@ use Test::More tests => 3;
 
 use Net::OAuth::ProtectedResourceRequest;
 
-sub slurp {
-    my $file = shift;
-    my $text = do { local( @ARGV, $/ ) = $file ; <> } ;
-    return $text;
-}
-
 SKIP: {
 
-    skip "Digest::SHA not installed", 2 unless eval 'require Digest::SHA; 1';
+    skip "Digest::SHA not installed", 3 unless eval 'require Digest::SHA; 1';
 
     my $request = Net::OAuth::ProtectedResourceRequest->new(
             consumer_key => 'dpf43f3p2l4k3l03',

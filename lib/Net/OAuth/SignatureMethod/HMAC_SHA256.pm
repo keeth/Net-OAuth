@@ -2,6 +2,7 @@ package Net::OAuth::SignatureMethod::HMAC_SHA256;
 use warnings;
 use strict;
 use Digest::SHA  ();
+use MIME::Base64 ();
 
 sub sign {
     my $self = shift;
