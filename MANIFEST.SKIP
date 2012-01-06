@@ -3,6 +3,7 @@
 \bCVS\b
 ,v$
 \B\.svn\b
+\B\.git\b
 \B\.cvsignore$
 
 # Avoid Makemaker generated and utility files.
@@ -38,3 +39,4 @@
 # Avoid archives of this distribution
 \bNet-OAuth-[\d\.\_]+
 \.kpf$
+^MYMETA.yml$

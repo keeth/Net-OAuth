@@ -49,6 +49,11 @@ sub put {
 
 Net::OAuth::AccessToken - OAuth Access Token
 
+=head1 DESCRIPTION
+
+WARNING: Net::OAuth::AccessToken is alpha code.  The rest of Net::OAuth is quite
+stable but this particular module is new, and is under-documented and under-tested.
+
 =head1 SEE ALSO
 
 L<Net::OAuth>

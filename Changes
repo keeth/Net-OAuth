@@ -101,3 +101,6 @@ Revision history for Net-OAuth
   
 0.27   Wed, 16 Jun 2010 20:39:59 UTC
     Added class for Yahoo! access token refresh request (thanks Marc Mims)
+
+0.28   Fri, 06 Jan 2012 05:51:04 UTC
+    Added HMAC-SHA256 support

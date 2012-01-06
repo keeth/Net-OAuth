@@ -67,6 +67,10 @@ Net::OAuth::Client - OAuth 1.0A Client
 =head1 DESCRIPTION
 
 Net::OAuth::Client represents an OAuth client or consumer.
+
+WARNING: Net::OAuth::Client is alpha code.  The rest of Net::OAuth is quite
+stable but this particular module is new, and is under-documented and under-tested.
+
   
 =head1 METHODS
 
