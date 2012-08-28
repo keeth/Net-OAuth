@@ -146,8 +146,10 @@ sub gather_message_parameters {
         return \%params;
     }
     my @pairs;
-    while (my ($k,$v) = each %params) {
-        push @pairs, join('=', encode($k), $opts{quote} . encode($v) . $opts{quote});
+    while (my ($k,$val) = each %params) {
+        foreach my $v ( @{ UNIVERSAL::isa($val, 'ARRAY') ? $val : [ $val ] } ) {
+            push @pairs, join('=', encode($k), $opts{quote} . encode($v) . $opts{quote});
+        }
     }
     return sort(@pairs);
 }
@@ -304,8 +306,10 @@ sub to_url {
 		my $params = $self->to_hash;
 		my $sep = '?';
 		foreach my $k (sort keys %$params) {
-		    $url .= $sep . encode($k) . '=' . encode( $params->{$k} );
-            $sep = '&' if $sep eq '?';
+		    foreach my $v ( @{ UNIVERSAL::isa($params->{$k}, 'ARRAY') ? $params->{$k} : [ $params->{$k} ] } ) {
+		        $url .= $sep . encode($k) . '=' . encode( $v );
+		        $sep = '&' if $sep eq '?';  
+		    }
 		}
 		return $url;
 	}
