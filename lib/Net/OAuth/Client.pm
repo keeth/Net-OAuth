@@ -191,11 +191,15 @@ sub get_request_token {
 sub authorize_url {
   my $self = shift;
   my %params = @_;
+  
+  my $auth_url = $self->_make_url('authorize');
+  
   # allow user to get request token their own way
   unless (defined $params{token} and defined $params{token_secret}) {
     my $request_token = $self->get_request_token;
     $params{token} = $request_token->{token};
     $params{token_secret} = $request_token->{token_secret};
+    $auth_url = $request_token->{login_url} if $request_token->{login_url};
   }
   if (defined $self->session) {
     $self->session->($params{token} => $params{token_secret});
@@ -204,7 +208,7 @@ sub authorize_url {
     'user auth',
     %params
   );
-  return $oauth_req->to_url($self->_make_url('authorize'));
+  return $oauth_req->to_url($auth_url);
 }
 
 sub get_access_token {
