@@ -24,8 +24,9 @@ sub request {
   );
   $oauth_req->sign;
 
-  return $self->client->request(HTTP::Request->new(
-    $method => $oauth_req->to_url, $header, $content
+  return $self->client->request(
+    $self->client->make_oauth_http_request(
+      $method, $oauth_req, $header, $content
   ));
 }
 

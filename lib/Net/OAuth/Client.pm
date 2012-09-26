@@ -126,6 +126,37 @@ sub request {
   my $response = $self->user_agent->request(@_);
 }
 
+sub make_oauth_http_request {
+  my $self = shift;
+  my ($method, $oauth_req, $header, $content) = @_;
+
+  my $url;
+  
+  if ($method eq 'POST') {
+  	if ($content) {
+  		# XXX use Authorization header
+  		croak "Need to use Authorization header for OAUTH POST with content but not supported";
+  	} else {
+  		$content = $oauth_req->to_post_body;
+  		if (!$header) {
+  			$header = HTTP::Headers->new;
+  		} elsif (ref $header eq 'ARRAY') {
+		  	$header = HTTP::Headers->new($header);
+  		}
+	   	$header->header(
+	  		'Content-Type'   => 'application/x-www-form-urlencoded',
+	  		'Content-Length' => length($content),
+	  	);
+  	}
+  	$url = $oauth_req->request_url->clone;
+  	$url->query(undef);
+  } else {
+  	$url = $oauth_req->to_url;
+  }
+  
+  return HTTP::Request->new($method => $url, $header, $content);
+}
+
 sub _parse_oauth_response {
   my $self = shift;
   my $do_what = shift;
@@ -159,7 +190,7 @@ sub _parse_url_encoding {
   my @pairs = split '&', $str;
   my %params;
 	foreach my $pair (@pairs) {
-        my ($k,$v) = split /=/, $pair;
+        my ($k,$v) = split (/=/, $pair);
         if (defined $k and defined $v) {
             $v =~ s/(^"|"$)//g;
             ($k,$v) = map Net::OAuth::Message::decode($_), $k, $v;
@@ -180,9 +211,9 @@ sub get_request_token {
     %params
   );
   $oauth_req->sign;
-  my $http_res = $self->request(HTTP::Request->new(
-    $self->request_token_method => $oauth_req->to_url
-  ));
+  my $http_res = $self->request(
+  	$self->make_oauth_http_request($self->request_token_method, $oauth_req)
+  );
   my $oauth_res = $self->_parse_oauth_response('get a request token', $http_res);
   $self->is_v1a(0) unless defined $oauth_res->{callback_confirmed};
   return $oauth_res;
@@ -191,11 +222,15 @@ sub get_request_token {
 sub authorize_url {
   my $self = shift;
   my %params = @_;
+  
+  my $auth_url = $self->_make_url('authorize');
+  
   # allow user to get request token their own way
   unless (defined $params{token} and defined $params{token_secret}) {
     my $request_token = $self->get_request_token;
     $params{token} = $request_token->{token};
     $params{token_secret} = $request_token->{token_secret};
+    $auth_url = $request_token->{login_url} if $request_token->{login_url};
   }
   if (defined $self->session) {
     $self->session->($params{token} => $params{token_secret});
@@ -204,7 +239,7 @@ sub authorize_url {
     'user auth',
     %params
   );
-  return $oauth_req->to_url($self->_make_url('authorize'));
+  return $oauth_req->to_url($auth_url);
 }
 
 sub get_access_token {
@@ -227,9 +262,9 @@ sub get_access_token {
   );
   $oauth_req->sign;
   
-  my $http_res = $self->request(HTTP::Request->new(
-    $self->access_token_method => $oauth_req->to_url
-  ));
+  my $http_res = $self->request(
+  	$self->make_oauth_http_request($self->access_token_method, $oauth_req)
+  );
 
   my $oauth_res = $self->_parse_oauth_response('get an access token', $http_res);
   

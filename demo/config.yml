@@ -14,3 +14,16 @@ sites:
                 authorize_path: '/accounts/OAuthAuthorizeToken'
                 access_token_path: '/accounts/OAuthGetAccessToken'
                 protected_resource_path: '/m8/feeds/contacts/default/full'
+        rdio:
+                name: 'Rdio'
+                client_id: ''
+                client_secret: ''
+                site: 'http://api.rdio.com/'
+                request_token_path: '/oauth/request_token'
+                authorize_path: 'unknown'
+                access_token_path: '/oauth/access_token'
+                request_token_method: 'POST'
+                access_token_method: 'POST'
+                protected_resource_path: '/1/?method=get&keys=t7609753'
+                protected_resource_method: 'POST'
+                
