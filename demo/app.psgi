@@ -14,6 +14,8 @@ sub client {
 		request_token_path => config->{sites}{$site_id}{request_token_path},
 		authorize_path => config->{sites}{$site_id}{authorize_path},
 		access_token_path => config->{sites}{$site_id}{access_token_path},
+		access_token_method => config->{sites}{$site_id}{access_token_method},
+		request_token_method => config->{sites}{$site_id}{request_token_method},
 		callback => fix_uri(uri_for("/got/$site_id")),
 		session => \&session,
 		debug => 1,
@@ -31,7 +33,8 @@ get '/got/:site_id' => sub {
 	my $content = '<h2>Access token retrieved successfully!</h2>'.
 	'<p>Token: ' . encode_entities($access_token->token) . '</p>'.
 	'<p>Secret: ' . encode_entities($access_token->token_secret) . '</p>';
-	my $response = $access_token->get(config->{sites}{params->{site_id}}{protected_resource_path});
+	my $method = config->{sites}{params->{site_id}}{protected_resource_method} || 'GET';
+	my $response = $access_token->request($method => config->{sites}{params->{site_id}}{protected_resource_path});
 	if ($response->is_success) {
 		$content .= '<h2>Protected resource retrieved successfully!</h2><textarea>' . encode_entities($response->decoded_content) . '</textarea>';
 	}
