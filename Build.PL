@@ -24,7 +24,12 @@ my $builder = Module::Build->new(
         'LWP::UserAgent' => '1',
     },    
     add_to_cleanup      => [ 'Net-OAuth-*' ],
-    create_makefile_pl => 'passthrough',
+    create_makefile_pl  => 'passthrough',
+    meta_merge          => {
+        resources => {
+            repository => 'https://github.com/keeth/Net-OAuth.git',
+        },
+    },
 );
 
 $builder->create_build_script();
