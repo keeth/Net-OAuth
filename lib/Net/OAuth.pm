@@ -368,7 +368,7 @@ See L<Net::OAuth::ConsumerRequest>
 
 =head2 I18N
 
-Per the OAuth spec, when making the signature Net::OAuth first encodes parameters to UTF-8. This means that any parameters you pass to Net::OAuth, if they might be outside of ASCII character set, should be run through Encode::decode() (or an equivalent PerlIO layer) first to decode them to Perl's internal character sructure.
+Per the OAuth spec, when making the signature Net::OAuth first encodes parameters to UTF-8. This means that any parameters you pass to Net::OAuth, if they might be outside of ASCII character set, should be run through Encode::decode() (or an equivalent PerlIO layer) first to decode them to Perl's internal character structure.
 
 =head2 OAUTH 1.0A
 
