@@ -7,7 +7,7 @@ shift(@ARGV) if defined $ARGV[0] and $ARGV[0] eq 'Build'; # accomodate with CPAN
 my $builder = Module::Build->new(
     module_name         => 'Net::OAuth',
     license             => 'perl',
-    dist_author         => 'Keith Grennan <kgrennan@cpan.org>',
+    dist_author         => [ 'Keith Grennan <kgrennan@cpan.org>', 'Robert Rothenberg <rrwo@cpan.org>' ],
     dist_version_from   => 'lib/Net/OAuth.pm',
     dist_abstract       => 'An implementation of the OAuth protocol',
     build_requires => {
