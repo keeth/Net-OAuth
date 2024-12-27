@@ -1,0 +1,7 @@
+Build
+Makefile
+Net-OAuth-*.tar.gz
+Net-OAuth-*/
+_build/
+blib/
+MYMETA.*
