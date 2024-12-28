@@ -13,7 +13,6 @@ Revision history for Net-OAuth
        - Maintenance taken over by Robert Rothenberg <rrwo@cpan.org>.
        - Added .mailmap to the repo.
 
-
 0.28   Fri, 06 Jan 2012 05:51:04 UTC
        - Added HMAC-SHA256 support
 
