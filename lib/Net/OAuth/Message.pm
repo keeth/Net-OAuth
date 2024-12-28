@@ -105,7 +105,7 @@ sub encode {
         if ($str =~ /[\x80-\xFF]/ and !utf8::is_utf8($str)) {
             warn "Net::OAuth warning: your OAuth message appears to contain some multi-byte characters that need to be decoded via Encode.pm or a PerlIO layer first.  This may result in an incorrect signature.";
         }
-    }    
+    }
     return URI::Escape::uri_escape_utf8($str,'^\w.~-');
 }
 
@@ -136,7 +136,7 @@ sub gather_message_parameters {
         }
         if ($self->can('request_url')) {
             my $url = $self->request_url;
-            _ensure_uri_object($url);         
+            _ensure_uri_object($url);
             foreach my $k ($url->query_param) {
                 $params{$k} = $url->query_param($k);
             }
@@ -300,7 +300,7 @@ sub to_url {
 	if (defined $url) {
         _ensure_uri_object($url);
         $url = $url->clone; # don't modify the URL that was passed in
-        $url->query(undef); # remove any existing query params, as these may cause the signature to break	
+        $url->query(undef); # remove any existing query params, as these may cause the signature to break
 		my $params = $self->to_hash;
 		my $sep = '?';
 		foreach my $k (sort keys %$params) {

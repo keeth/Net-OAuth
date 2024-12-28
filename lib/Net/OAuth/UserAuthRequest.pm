@@ -20,7 +20,7 @@ __PACKAGE__->mk_classdata(optional_api_params => [qw/
 
 __PACKAGE__->mk_classdata(signature_elements => [qw/
     /]);
-    
+
 __PACKAGE__->mk_classdata(all_message_params => [
     @{__PACKAGE__->required_message_params},
     @{__PACKAGE__->optional_message_params},
@@ -28,12 +28,12 @@ __PACKAGE__->mk_classdata(all_message_params => [
 
 __PACKAGE__->mk_classdata(all_api_params => [
     @{__PACKAGE__->required_api_params},
-    @{__PACKAGE__->optional_api_params},	
+    @{__PACKAGE__->optional_api_params},
 	]);
 
 __PACKAGE__->mk_classdata(all_params => [
     @{__PACKAGE__->all_api_params},
-    @{__PACKAGE__->all_message_params},	
+    @{__PACKAGE__->all_message_params},
 	]);
 
 __PACKAGE__->mk_accessors(
