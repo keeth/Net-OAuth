@@ -5,9 +5,9 @@ Revision history for Net-OAuth
        - Fix broken dependency for URI::Escape GH#4 (thanks oiami)
 
        [Documentation]
-       - Reorganised Changes to almost follow CPAN::Changes::Spec.
-       - Updated author and maintainer information.
-       - Changed to consistent copyright information.
+       - Reorganised Changes to almost follow CPAN::Changes::Spec
+       - Updated author and maintainer information
+       - Changed to consistent copyright information
        - Fixed typo RT#125292 RT#90007
 
        [Other]
