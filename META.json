@@ -32,7 +32,6 @@
             "Class::Data::Inheritable" : "0.06",
             "Digest::HMAC_SHA1" : "1.01",
             "Digest::SHA" : "5.47",
-            "Digest::SHA1" : "2.12",
             "Encode" : "2.35",
             "LWP::UserAgent" : "1",
             "URI::Escape" : "3.28"
