@@ -297,11 +297,15 @@ sub site_url {
   return $url;
 }
 
+=head1 AUTHOR
 
+Originally by Keith Grennan <kgrennan@cpan.org>
+
+Currently maintained by Robert Rothenberg <rrwo@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2011 Keith Grennan.
+Copyright 2007-2012, 2024 Keith Grennan
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

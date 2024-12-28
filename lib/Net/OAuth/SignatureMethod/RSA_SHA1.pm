@@ -37,7 +37,7 @@ Currently maintained by Robert Rothenberg <rrwo@cpan.org>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2007 Keith Grennan, all rights reserved.
+Copyright 2007-2012, 2024 Keith Grennan
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

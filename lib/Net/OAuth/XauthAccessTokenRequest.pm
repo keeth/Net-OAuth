@@ -30,7 +30,7 @@ Simon Wistow
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2010 Keith Grennan, all rights reserved.
+Copyright 2007-2012, 2024 Keith Grennan
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
