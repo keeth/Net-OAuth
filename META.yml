@@ -18,7 +18,7 @@ name: Net-OAuth
 provides:
   Net::OAuth:
     file: lib/Net/OAuth.pm
-    version: '0.28'
+    version: '0.29'
   Net::OAuth::AccessToken:
     file: lib/Net/OAuth/AccessToken.pm
   Net::OAuth::AccessTokenRequest:
@@ -35,7 +35,7 @@ provides:
     file: lib/Net/OAuth/ProtectedResourceRequest.pm
   Net::OAuth::Request:
     file: lib/Net/OAuth/Request.pm
-    version: '0.28'
+    version: '0.29'
   Net::OAuth::RequestTokenRequest:
     file: lib/Net/OAuth/RequestTokenRequest.pm
   Net::OAuth::RequestTokenResponse:
@@ -71,11 +71,10 @@ requires:
   Class::Data::Inheritable: '0.06'
   Digest::HMAC_SHA1: '1.01'
   Digest::SHA: '5.47'
-  Digest::SHA1: '2.12'
   Encode: '2.35'
   LWP::UserAgent: '1'
   URI::Escape: '3.28'
 resources:
   license: http://dev.perl.org/licenses/
-version: '0.28'
+version: '0.29'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.020'
