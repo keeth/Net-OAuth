@@ -4,10 +4,12 @@ Revision history for Net-OAuth
        - Reorganised Changes to almost follow CPAN::Changes::Spec.
        - Updated author and maintainer information.
        - Changed to consistent copyright information.
+       - Fixed typo RT#125292 RT#90007
 
        [Other]
        - Maintenance taken over by Robert Rothenberg <rrwo@cpan.org>.
        - Added .mailmap to the repo.
+
 
 0.28   Fri, 06 Jan 2012 05:51:04 UTC
        - Added HMAC-SHA256 support
