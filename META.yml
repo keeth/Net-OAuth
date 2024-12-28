@@ -75,6 +75,7 @@ requires:
   LWP::UserAgent: '1'
   URI: '5.15'
 resources:
+  bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Net-OAuth
   license: http://dev.perl.org/licenses/
   repository: https://github.com/keeth/Net-OAuth.git
 version: '0.29'

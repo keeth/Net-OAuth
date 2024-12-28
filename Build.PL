@@ -27,6 +27,7 @@ my $builder = Module::Build->new(
     create_makefile_pl  => 'passthrough',
     meta_merge          => {
         resources => {
+            bugtracker => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Net-OAuth',
             repository => 'https://github.com/keeth/Net-OAuth.git',
         },
     },

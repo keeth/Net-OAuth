@@ -116,6 +116,9 @@
    },
    "release_status" : "stable",
    "resources" : {
+      "bugtracker" : {
+         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=Net-OAuth"
+      },
       "license" : [
          "http://dev.perl.org/licenses/"
       ],
