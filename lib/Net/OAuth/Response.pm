@@ -28,12 +28,12 @@ __PACKAGE__->mk_classdata(all_message_params => [
 
 __PACKAGE__->mk_classdata(all_api_params => [
     @{__PACKAGE__->required_api_params},
-    @{__PACKAGE__->optional_api_params},	
+    @{__PACKAGE__->optional_api_params},
 	]);
-	
+
 __PACKAGE__->mk_classdata(all_params => [
     @{__PACKAGE__->all_api_params},
-    @{__PACKAGE__->all_message_params},	
+    @{__PACKAGE__->all_message_params},
 	]);
 
 __PACKAGE__->mk_accessors(

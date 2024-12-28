@@ -15,7 +15,7 @@ sub request {
   my $self = shift;
   my ($method, $uri, $header, $content, %params) = @_;
   my $oauth_req = $self->client->_make_request(
-    'protected resource', 
+    'protected resource',
     request_method => $method,
     request_url => $self->client->site_url($uri),
     token => $self->token,

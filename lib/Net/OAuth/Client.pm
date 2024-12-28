@@ -71,7 +71,7 @@ Net::OAuth::Client represents an OAuth client or consumer.
 WARNING: Net::OAuth::Client is alpha code.  The rest of Net::OAuth is quite
 stable but this particular module is new, and is under-documented and under-tested.
 
-  
+
 =head1 METHODS
 
 =over
@@ -80,7 +80,7 @@ stable but this particular module is new, and is under-documented and under-test
 
 Create a new Client
 
-=over 
+=over
 
 =item * $client_id
 
@@ -132,14 +132,14 @@ sub _parse_oauth_response {
   my $http_res = shift;
   my $msg = "Unable to $do_what: Request for " . $http_res->request->uri . " failed";
   unless ($http_res->is_success) {
-    if ($self->debug) { 
-      $msg .= "," . $http_res->as_string . " ";      
+    if ($self->debug) {
+      $msg .= "," . $http_res->as_string . " ";
     }
     elsif (
       $http_res->content_type eq 'application/x-www-form-urlencoded'
       and $http_res->decoded_content =~ /\boauth_problem=(\w+)/
-      ) { 
-      $msg .= ", reason: " . $1;      
+      ) {
+      $msg .= ", reason: " . $1;
     }
     else {
       $msg .= ": " . $http_res->status_line . " (pass debug=>1 to Net::OAuth::Client->new to dump the entire response)";
@@ -151,7 +151,7 @@ sub _parse_oauth_response {
     croak "Unable to $do_what: server response is missing '$k'" unless defined $oauth_res->{$k};
   }
   return $oauth_res;
-  
+
 }
 
 sub _parse_url_encoding {
@@ -174,7 +174,7 @@ sub get_request_token {
   my $self = shift;
   my %params = @_;
   my $oauth_req = $self->_make_request(
-    "request token", 
+    "request token",
     request_method => $self->request_token_method,
     request_url => $self->_make_url("request_token"),
     %params
@@ -212,13 +212,13 @@ sub get_access_token {
   my $token = shift;
   my $verifier = shift;
   my %params = @_;
-  
+
   if (defined $self->session) {
     $params{token_secret} = $self->session->($token);
   }
 
   my $oauth_req = $self->_make_request(
-    'access token', 
+    'access token',
     request_method => $self->access_token_method,
     request_url => $self->_make_url('access_token'),
     token => $token,
@@ -226,13 +226,13 @@ sub get_access_token {
     %params
   );
   $oauth_req->sign;
-  
+
   my $http_res = $self->request(HTTP::Request->new(
     $self->access_token_method => $oauth_req->to_url
   ));
 
   my $oauth_res = $self->_parse_oauth_response('get an access token', $http_res);
-  
+
   return Net::OAuth::AccessToken->new(%$oauth_res, client => $self);
 }
 
@@ -314,9 +314,5 @@ by the Free Software Foundation; or the Artistic License.
 See http://dev.perl.org/licenses/ for more information.
 
 =cut
-
-
-1;
-
 
 1;

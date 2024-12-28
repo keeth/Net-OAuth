@@ -12,7 +12,7 @@ cpan> install Net::OAuth
 WEB SERVER EXAMPLE (Dancer)
 
   # This example is simplified for illustrative purposes, see the complete code in /demo
-  
+
   # Note that client_id is the Consumer Key and client_secret is the Consumer Secret
 
   use Dancer;
@@ -38,7 +38,7 @@ WEB SERVER EXAMPLE (Dancer)
 
   # User has returned with token and verifier appended to the URL.
   get '/auth/google/callback' => sub {
-  
+
   	# Use the auth code to fetch the access token
   	my $access_token =  client->get_access_token(params->{oauth_token}, params->{oauth_verifier});
 
