@@ -70,6 +70,7 @@ provides:
 requires:
   Class::Accessor: '0.31'
   Class::Data::Inheritable: '0.06'
+  Crypt::URandom: '0.37'
   Digest::HMAC_SHA1: '1.01'
   Digest::SHA: '5.47'
   Encode: '2.35'

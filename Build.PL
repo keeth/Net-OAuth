@@ -22,6 +22,7 @@ my $builder = Module::Build->new(
         'Class::Data::Inheritable' => '0.06',
         'Encode' => '2.35',
         'LWP::UserAgent' => '1',
+        'Crypt::URandom' => '0.37',
     },
     configure_requires => {
         'Module::Build'         => '0.4234',

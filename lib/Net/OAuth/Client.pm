@@ -9,6 +9,7 @@ use Net::OAuth;
 use Net::OAuth::Message;
 use Net::OAuth::AccessToken;
 use Carp;
+use Crypt::URandom qw( urandom ),
 
 =head1 NAME
 
@@ -257,7 +258,6 @@ sub _make_request {
   my $type = shift;
   my %params = @_;
   my %defaults = (
-    nonce => int( rand( 2**32 ) ),
     timestamp => time,
     consumer_key => $self->id,
     consumer_secret => $self->secret,
@@ -265,6 +265,7 @@ sub _make_request {
     signature_method => 'HMAC-SHA1',
     request_method => 'GET',
   );
+  $defaults{nonce} = unpack("H*", urandom(16)) unless exists $params{nonce};
   $defaults{protocol_version} = Net::OAuth::PROTOCOL_VERSION_1_0A if $self->is_v1a;
   my $req = Net::OAuth->request($type)->new(
     %defaults,
