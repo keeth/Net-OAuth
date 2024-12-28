@@ -457,7 +457,7 @@ Something like:
 
 =head1 AUTHOR
 
-Originally by Keith Grennan <kgrennan at cpan.org>
+Originally by Keith Grennan <kgrennan@cpan.org>
 
 Currently maintained by Robert Rothenberg <rrwo@cpan.org>
 

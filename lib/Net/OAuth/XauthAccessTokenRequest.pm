@@ -18,7 +18,9 @@ L<http://apiwiki.twitter.com/Twitter-REST-API-Method:-oauth-access_token-for-xAu
 
 =head1 AUTHOR
 
-Keith Grennan, C<< <kgrennan at cpan.org> >>
+Originally by Keith Grennan <kgrennan@cpan.org>
+
+Currently maintained by Robert Rothenberg <rrwo@cpan.org>
 
 =head1 CONTRIBUTORS
 

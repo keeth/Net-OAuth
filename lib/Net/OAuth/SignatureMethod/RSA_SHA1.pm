@@ -31,7 +31,9 @@ L<Net::OAuth>, L<http://oauth.net>
 
 =head1 AUTHOR
 
-Keith Grennan, C<< <kgrennan at cpan.org> >>
+Originally by Keith Grennan <kgrennan@cpan.org>
+
+Currently maintained by Robert Rothenberg <rrwo@cpan.org>
 
 =head1 COPYRIGHT & LICENSE
 
