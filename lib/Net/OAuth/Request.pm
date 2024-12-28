@@ -6,7 +6,7 @@ use URI;
 use URI::QueryParam;
 
 use Net::OAuth;
-our $VERSION = '0.28';
+our $VERSION = '0.29';
 
 __PACKAGE__->mk_classdata(required_message_params => [qw/
     consumer_key
