@@ -10,6 +10,9 @@ Revision history for Net-OAuth
        - Changed to consistent copyright information
        - Fixed typo RT#125292 RT#90007
 
+       [Tests]
+       - Fixed randomly failing t/02-rsa.t test RT#125291 RT#125482 (thanks Gregor Herrmann)
+
        [Other]
        - Maintenance taken over by Robert Rothenberg <rrwo@cpan.org>.
        - Added .mailmap to the repo.
