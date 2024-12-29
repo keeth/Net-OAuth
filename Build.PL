@@ -23,8 +23,11 @@ my $builder = Module::Build->new(
         'Encode' => '2.35',
         'LWP::UserAgent' => '1',
     },
+    config_requires => {
+        'Module::Build::Compat' => '0.4234',
+    },
     add_to_cleanup      => [ 'Net-OAuth-*' ],
-    create_makefile_pl  => 'passthrough',
+    create_makefile_pl  => 'small',
     meta_merge          => {
         resources => {
             bugtracker => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Net-OAuth',
