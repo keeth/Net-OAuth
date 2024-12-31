@@ -106,7 +106,7 @@ sub encode {
             warn "Net::OAuth warning: your OAuth message appears to contain some multi-byte characters that need to be decoded via Encode.pm or a PerlIO layer first.  This may result in an incorrect signature.";
         }
     }
-    return URI::Escape::uri_escape_utf8($str,'^\w.~-');
+    return URI::Escape::uri_escape_utf8($str);
 }
 
 sub decode {
