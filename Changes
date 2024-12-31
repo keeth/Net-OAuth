@@ -20,6 +20,7 @@ Revision history for Net-OAuth
        - Distribution metadata now has the git repository (thanks Sergey Romanov)
        - Set up config_requires in Build.PL
        - Updated Build.PL configuration
+       - Updated MANIFEST.SKIP rules
 
 0.28   Fri, 06 Jan 2012 05:51:04 UTC
        - Added HMAC-SHA256 support
