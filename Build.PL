@@ -23,7 +23,8 @@ my $builder = Module::Build->new(
         'Encode' => '2.35',
         'LWP::UserAgent' => '1',
     },
-    config_requires => {
+    configure_requires => {
+        'Module::Build'         => '0.4234',
         'Module::Build::Compat' => '0.4234',
     },
     add_to_cleanup      => [ 'Net-OAuth-*' ],

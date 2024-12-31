@@ -19,6 +19,7 @@ Revision history for Net-OAuth
        - Added .mailmap to the repo.
        - Distribution metadata now has the git repository (thanks Sergey Romanov)
        - Set up config_requires in Build.PL
+       - Updated Build.PL configuration
 
 0.28   Fri, 06 Jan 2012 05:51:04 UTC
        - Added HMAC-SHA256 support
