@@ -66,7 +66,7 @@ Currently maintained by Robert Rothenberg <rrwo@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2007-2012, 2024 Keith Grennan
+Copyright 2007-2012, 2024-2025 Keith Grennan
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
