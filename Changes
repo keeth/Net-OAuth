@@ -15,8 +15,8 @@ Revision history for Net-OAuth
        - Fixed randomly failing t/02-rsa.t test RT#125291 RT#125482 (thanks Gregor Herrmann)
 
        [Other]
-       - Maintenance taken over by Robert Rothenberg <rrwo@cpan.org>.
-       - Added .mailmap to the repo.
+       - Maintenance taken over by Robert Rothenberg <rrwo@cpan.org>
+       - Added .mailmap to the repo
        - Distribution metadata now has the git repository (thanks Sergey Romanov)
        - Set up config_requires in Build.PL
        - Updated Build.PL configuration
