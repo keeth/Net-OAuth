@@ -9,6 +9,7 @@ build_requires:
 configure_requires:
   Module::Build: '0.4234'
   Module::Build::Compat: '0.4234'
+  Module::Metadata: '1.000015'
 dynamic_config: 1
 generated_by: 'Module::Build version 0.4234, CPAN::Meta::Converter version 2.150010'
 license: perl

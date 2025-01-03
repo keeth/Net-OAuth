@@ -27,6 +27,7 @@ my $builder = Module::Build->new(
     configure_requires => {
         'Module::Build'         => '0.4234',
         'Module::Build::Compat' => '0.4234',
+        'Module::Metadata'      => '1.000015',
     },
     add_to_cleanup      => [ 'Net-OAuth-*' ],
     create_makefile_pl  => 'small',
