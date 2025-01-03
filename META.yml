@@ -19,7 +19,7 @@ name: Net-OAuth
 provides:
   Net::OAuth:
     file: lib/Net/OAuth.pm
-    version: '0.29'
+    version: '0.30'
   Net::OAuth::AccessToken:
     file: lib/Net/OAuth/AccessToken.pm
   Net::OAuth::AccessTokenRequest:
@@ -28,6 +28,7 @@ provides:
     file: lib/Net/OAuth/AccessTokenResponse.pm
   Net::OAuth::Client:
     file: lib/Net/OAuth/Client.pm
+    version: '0.30'
   Net::OAuth::ConsumerRequest:
     file: lib/Net/OAuth/ConsumerRequest.pm
   Net::OAuth::Message:
@@ -36,7 +37,7 @@ provides:
     file: lib/Net/OAuth/ProtectedResourceRequest.pm
   Net::OAuth::Request:
     file: lib/Net/OAuth/Request.pm
-    version: '0.29'
+    version: '0.30'
   Net::OAuth::RequestTokenRequest:
     file: lib/Net/OAuth/RequestTokenRequest.pm
   Net::OAuth::RequestTokenResponse:
@@ -80,5 +81,5 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Net-OAuth
   license: http://dev.perl.org/licenses/
   repository: https://github.com/keeth/Net-OAuth.git
-version: '0.29'
+version: '0.30'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.020'
