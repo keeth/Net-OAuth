@@ -9,7 +9,7 @@ use Net::OAuth;
 use Net::OAuth::Message;
 use Net::OAuth::AccessToken;
 use Carp;
-use Crypt::URandom qw( urandom ),
+use Crypt::URandom qw( urandom );
 
 =head1 NAME
 
