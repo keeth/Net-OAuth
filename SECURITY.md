@@ -36,7 +36,7 @@ on the CPANSec website.
 The maintainer(s) aim to acknowledge your security report as soon as
 possible.  However, this project is maintained by a small group of
 volunteers in their spare time, and they cannot guarantee a rapid
-response.  If you have not received a response from the them within a
+response.  If you have not received a response from them within a
 week, then please send a reminder to them and copy the report to
 CPANSec at <cpan-security@security.metacpan.org>.
 
