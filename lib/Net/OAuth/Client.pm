@@ -11,7 +11,7 @@ use Net::OAuth::AccessToken;
 use Carp;
 use Crypt::URandom qw( urandom );
 
-our $VERSION = '0.31';
+our $VERSION = '0.32';
 
 =head1 NAME
 
