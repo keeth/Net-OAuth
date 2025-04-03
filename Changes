@@ -3,11 +3,13 @@ Revision history for Net-OAuth
        [Documentation]
        - Added missing version and timestamp to Changes for v0.31.
 
+       - Added missing acknowledgement to Changes for v0.31.
+
 0.31   Thu, 03 Apr 2025 16:51 BST
        [Bug Fixes]
        - Added missing dependency RT#70407.
 
-       - Removed use of Digest::HMAC_SHA1.
+       - Removed use of Digest::HMAC_SHA1 (thanks to James Raspass).
 
        [Documentation]
        - Updated Changes for v0.29 with CVE.
