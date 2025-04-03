@@ -461,6 +461,44 @@ Originally by Keith Grennan <kgrennan@cpan.org>
 
 Currently maintained by Robert Rothenberg <rrwo@cpan.org>
 
+=head1 CONTRIBUTORS
+
+Adam Taylor
+
+Brad Whitaker
+
+Cosimo Streppone <cosimo@cpan.org>
+
+Daisuke Maki
+
+Gregor Herrmann
+
+James Raspass <jraspass@gmail.com>
+
+Jeff Dairiki
+
+Jens Rehsack
+
+Katou Akira
+
+Masayoshi Sekimura
+
+Marc Mims
+
+Mike Schleif
+
+Nobuo Danjou
+
+Pattawan Gerlings-Kaewduangdee (oiami)
+
+Sergey Romanov <sromanov-dev@yandex.ru>
+
+Shawn Moore <cpan@sartak.org>
+
+Simon Wistow
+
+Tomaž Šolc <avian@cpan.org>
+
 =head1 COPYRIGHT & LICENSE
 
 Copyright 2007-2012, 2024-2025 Keith Grennan
