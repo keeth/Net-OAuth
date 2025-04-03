@@ -5,12 +5,12 @@ Git Repository for [Net-OAuth](https://github.com/keeth/Net-OAuth).
 
 This text is based on the CPAN Security Group's
 [Guidelines for Adding a Security Policy to Perl Distributions](https://security.metacpan.org/docs/guides/security-policy-for-authors.html)
-(version 0.2.2).
+(version 1.2.0).
 
 # How to Report a Security Vulnerability
 
-Security vulnerabilties can be reported by e-mail to the current
-project maintainer(s) at <rrwo@cpan.org>.
+Security vulnerabilities can be reported using this project's GitHub
+[Security Advisories](https://github.com/keeth/Net-OAuth/security/advisories).
 
 Please include as many details as possible, including code samples
 or test cases, so that we can reproduce the issue.  Check that your
