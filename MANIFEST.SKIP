@@ -42,4 +42,4 @@
 # Avoid archives of this distribution
 \bNet-OAuth-[\d\.\_]+
 \.kpf$
-^MYMETA.yml$
+^MYMETA.

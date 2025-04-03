@@ -10,6 +10,9 @@ Revision history for Net-OAuth
 
        - Updated the security policy.
 
+       [Toolchain]
+       - Remove Build.PL and just use Makefile.PL.
+
 0.30   Fri, 03 Jan 2025 09:46 GMT
        [Bug Fixes]
        - Fixed syntax error in Net::OAuth::Client (oops).

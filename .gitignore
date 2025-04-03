@@ -5,3 +5,5 @@ Net-OAuth-*/
 _build/
 blib/
 MYMETA.*
+pm_to_blib
+*.bak
