@@ -16,7 +16,6 @@ my $builder = Module::Build->new(
     },
     requires => {
         'Digest::SHA' => '5.47',
-        'Digest::HMAC_SHA1' => '1.01',
         'URI' => '5.15',
         'Class::Accessor' => '0.31',
         'Class::Data::Inheritable' => '0.06',
