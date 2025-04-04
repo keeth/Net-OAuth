@@ -8,3 +8,4 @@ MYMETA.*
 META.*
 pm_to_blib
 *.bak
+*.old
