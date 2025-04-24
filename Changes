@@ -7,6 +7,8 @@ Revision history for Net-OAuth
 
        - Added CONTRIBUTORS section to the POD.
 
+       - Added a "How to Contribute" document.
+
 0.31   Thu, 03 Apr 2025 16:51 BST
        [Bug Fixes]
        - Added missing dependency RT#70407.
